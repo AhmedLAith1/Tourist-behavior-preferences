@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نظام تحليل تفضيلات السياح لآثار بابل</title>
+    <link rel="stylesheet" href="static/css/styles.css" />
+    <!-- إضافة Bootstrap RTL -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" />
+    <!-- إضافة Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <!-- شريط التنقل -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <i class="fas fa-landmark me-2"></i>
+            نظام تحليل تفضيلات السياح لآثار بابل
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="#" id="home-link">الرئيسية</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="about-link">حول النظام</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" id="sites-link">المواقع الأثرية</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- القسم الرئيسي -->
+      <main class="container my-5">
+        <!-- صفحة البداية -->
+        <section id="welcome-section" class="text-center">
+          <div class="row">
+            <div class="col-md-8 offset-md-2">
+              <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                  <h1 class="display-5">مرحباً بك في نظام تحليل تفضيلات السياح لآثار بابل</h1>
+                </div>
+                <div class="card-body">
+                  <div class="mb-4">
+                    <img
+                      src="static/images/babylon-header.jpg"
+                      alt="آثار بابل"
+                      class="img-fluid rounded mb-3"
+                      onerror="this.src='https://via.placeholder.com/800x400?text=آثار+بابل'"
+                    />
+                    <p class="lead">
+                      هذا النظام يساعدك في اكتشاف المواقع الأثرية في بابل التي تناسب تفضيلاتك الشخصية. من خلال الإجابة
+                      على بعض الأسئلة البسيطة، سنقدم لك توصيات مخصصة للمواقع التي قد تهمك، مع إحداثيات دقيقة لكل موقع
+                      لمساعدتك في التخطيط لرحلتك.
+                    </p>
+                  </div>
+                  <div class="d-grid gap-2 col-md-6 mx-auto">
+                    <button id="start-survey-btn" class="btn btn-primary btn-lg">
+                      <i class="fas fa-play-circle me-2"></i>
+                      ابدأ الاستبيان
+                    </button>
+                    <button id="view-sites-btn" class="btn btn-outline-primary btn-lg">
+                      <i class="fas fa-map-marked-alt me-2"></i>
+                      استعرض المواقع الأثرية
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- قسم الاستبيان -->
+        <section id="survey-section" class="d-none">
+          <div class="row">
+            <div class="col-md-8 offset-md-2">
+              <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                  <h2>استبيان تفضيلات السياح</h2>
+                  <div>
+                    <span id="question-counter" class="badge bg-light text-primary">السؤال 1 من 12</span>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <!-- شريط التقدم -->
+                  <div class="progress mb-4" style="height: 10px">
+                    <div
+                      id="progress-bar"
+                      class="progress-bar bg-success"
+                      role="progressbar"
+                      style="width: 8%"
+                      aria-valuenow="8"
+                      aria-valuemin="0"
+                      aria-valuemax="100"
+                    ></div>
+                  </div>
+
+                  <!-- محتوى السؤال -->
+                  <div id="question-container">
+                    <h3 id="question-text" class="mb-4">ما هو نوع الآثار المفضل لديك؟</h3>
+                    <div id="options-container" class="d-grid gap-3">
+                      <!-- سيتم إضافة الخيارات هنا بواسطة JavaScript -->
+                    </div>
+                  </div>
+
+                  <!-- أزرار التنقل -->
+                  <div class="d-flex justify-content-between mt-4">
+                    <button id="prev-question-btn" class="btn btn-secondary" disabled>
+                      <i class="fas fa-arrow-right me-2"></i>
+                      السؤال السابق
+                    </button>
+                    <button id="next-question-btn" class="btn btn-primary" disabled>
+                      السؤال التالي
+                      <i class="fas fa-arrow-left ms-2"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- قسم النتائج -->
+        <section id="results-section" class="d-none">
+          <div class="row">
+            <div class="col-md-10 offset-md-1">
+              <div class="card shadow-lg">
+                <div class="card-header bg-success text-white">
+                  <h2>نتائج تحليل تفضيلاتك</h2>
+                </div>
+                <div class="card-body">
+                  <div class="alert alert-success">
+                    <i class="fas fa-check-circle me-2"></i>
+                    تم تحليل تفضيلاتك بنجاح! إليك المواقع الأثرية التي قد تهمك في بابل.
+                  </div>
+
+                  <!-- قائمة المواقع الموصى بها -->
+                  <h3 class="mb-4">المواقع الأثرية الموصى بها</h3>
+                  <div id="recommendations-container" class="row">
+                    <!-- سيتم إضافة التوصيات هنا بواسطة JavaScript -->
+                  </div>
+
+                  <!-- قسم المسار السياحي -->
+                  <h3 class="mt-5 mb-4">المسار السياحي المقترح</h3>
+                  <div class="mb-3">
+                    <label for="days-select" class="form-label">عدد أيام الزيارة:</label>
+                    <select id="days-select" class="form-select w-auto">
+                      <option value="1">يوم واحد</option>
+                      <option value="2" selected>يومان</option>
+                      <option value="3">3 أيام</option>
+                      <option value="4">4 أيام</option>
+                    </select>
+                  </div>
+                  <div id="itinerary-container">
+                    <!-- سيتم إضافة المسار السياحي هنا بواسطة JavaScript -->
+                  </div>
+
+                  <!-- قسم تصدير البيانات -->
+                  <h3 class="mt-5 mb-4">تصدير البيانات</h3>
+                  <div class="d-flex gap-3">
+                    <button id="export-coordinates-btn" class="btn btn-outline-primary">
+                      <i class="fas fa-file-export me-2"></i>
+                      تصدير الإحداثيات
+                    </button>
+                    <button id="export-itinerary-btn" class="btn btn-outline-primary">
+                      <i class="fas fa-route me-2"></i>
+                      تصدير المسار السياحي
+                    </button>
+                    <button id="restart-survey-btn" class="btn btn-outline-secondary ms-auto">
+                      <i class="fas fa-redo me-2"></i>
+                      إعادة الاستبيان
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- قسم المواقع الأثرية -->
+        <section id="sites-section" class="d-none">
+          <div class="row">
+            <div class="col-md-10 offset-md-1">
+              <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                  <h2>المواقع الأثرية في بابل</h2>
+                </div>
+                <div class="card-body">
+                  <!-- شريط البحث -->
+                  <div class="row mb-4">
+                    <div class="col-md-6">
+                      <div class="input-group">
+                        <input type="text" id="search-input" class="form-control" placeholder="ابحث عن موقع أثري..." />
+                        <button id="search-btn" class="btn btn-primary">
+                          <i class="fas fa-search"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <select id="filter-select" class="form-select">
+                        <option value="all">جميع المواقع</option>
+                        <option value="معبد">المعابد</option>
+                        <option value="قصر">القصور</option>
+                        <option value="بوابة">البوابات</option>
+                        <option value="متحف">المتاحف</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <!-- قائمة المواقع الأثرية -->
+                  <div id="sites-container" class="row">
+                    <!-- سيتم إضافة المواقع هنا بواسطة JavaScript -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- قسم حول النظام -->
+        <section id="about-section" class="d-none">
+          <div class="row">
+            <div class="col-md-8 offset-md-2">
+              <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                  <h2>حول نظام تحليل تفضيلات السياح لآثار بابل</h2>
+                </div>
+                <div class="card-body">
+                  <h3>ما هو هذا النظام؟</h3>
+                  <p>
+                    نظام تحليل تفضيلات السياح لآثار بابل هو نظام ذكي يستخدم خوارزمية شجرة القرار لتحليل تفضيلات السياح
+                    وتقديم توصيات مخصصة للمواقع الأثرية في بابل التي قد تهمهم بناءً على إجاباتهم على مجموعة من الأسئلة.
+                  </p>
+
+                  <h3>كيف يعمل النظام؟</h3>
+                  <ol>
+                    <li>يقوم السائح بالإجابة على 12 سؤالاً حول تفضيلاته السياحية.</li>
+                    <li>يقوم النظام بتحليل الإجابات باستخدام خوارزمية شجرة القرار.</li>
+                    <li>يقدم النظام توصيات مخصصة للمواقع الأثرية التي تناسب تفضيلات السائح.</li>
+                    <li>يعرض النظام إحداثيات خطوط الطول والعرض لكل موقع لاستخدامها في رسم الخرائط.</li>
+                    <li>يقترح النظام مساراً سياحياً منظماً حسب عدد أيام الزيارة.</li>
+                  </ol>
+
+                  <h3>مميزات النظام</h3>
+                  <ul>
+                    <li>تحليل دقيق لتفضيلات السياح باستخدام خوارزميات الذكاء الاصطناعي.</li>
+                    <li>قاعدة بيانات شاملة تضم 20 موقعاً أثرياً في بابل مع معلومات مفصلة عن كل موقع.</li>
+                    <li>عرض إحداثيات دقيقة لكل موقع لاستخدامها في تطبيقات الخرائط.</li>
+                    <li>اقتراح مسارات سياحية منظمة حسب عدد أيام الزيارة.</li>
+                    <li>إمكانية تصدير البيانات بتنسيق JSON لاستخدامها في تطبيقات أخرى.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- تذييل الصفحة -->
+      <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container text-center">
+          <p>جميع الحقوق محفوظة &copy; 2025 - نظام تحليل تفضيلات السياح لآثار بابل</p>
+          <p>مشروع تخرج في مجال تكنولوجيا المعلومات</p>
+        </div>
+      </footer>
+    </div>
+
+    <!-- نافذة منبثقة لعرض تفاصيل الموقع -->
+    <div class="modal fade" id="site-details-modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title" id="modal-site-title">تفاصيل الموقع</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-6">
+                <img id="modal-site-image" src="" alt="صورة الموقع" class="img-fluid rounded mb-3" />
+              </div>
+              <div class="col-md-6">
+                <h4 id="modal-site-name"></h4>
+                <p id="modal-site-description"></p>
+                <div class="mb-3"><strong>النوع:</strong> <span id="modal-site-type"></span></div>
+                <div class="mb-3"><strong>الفترة التاريخية:</strong> <span id="modal-site-period"></span></div>
+                <div class="mb-3"><strong>مدة الزيارة:</strong> <span id="modal-site-duration"></span></div>
+                <div class="mb-3"><strong>رسوم الدخول:</strong> <span id="modal-site-fee"></span></div>
+                <div class="mb-3">
+                  <strong>الإحداثيات:</strong>
+                  <div id="modal-site-coordinates" class="input-group">
+                    <input type="text" class="form-control" readonly />
+                    <button class="btn btn-outline-secondary copy-coords-btn" type="button">
+                      <i class="fas fa-copy"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- نافذة منبثقة لتصدير الإحداثيات -->
+    <div class="modal fade" id="export-coordinates-modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <h5 class="modal-title">تصدير إحداثيات المواقع</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="إغلاق"></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="coordinates-format" class="form-label">تنسيق الإحداثيات:</label>
+              <select id="coordinates-format" class="form-select">
+                <option value="json">JSON</option>
+                <option value="csv">CSV</option>
+                <option value="text">نص عادي</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="coordinates-data" class="form-label">البيانات:</label>
+              <textarea id="coordinates-data" class="form-control" rows="10" readonly></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="copy-coordinates-btn">
+              <i class="fas fa-copy me-2"></i>
+              نسخ البيانات
+            </button>
+            <button type="button" class="btn btn-success" id="download-coordinates-btn">
+              <i class="fas fa-download me-2"></i>
+              تنزيل
+            </button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">إغلاق</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- إضافة Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- إضافة ملفات JavaScript الخاصة بالتطبيق -->
+    <script src="static/js/babylon_data.js"></script>
+    <script src="static/js/app.js"></script>
+  </body>
+</html>

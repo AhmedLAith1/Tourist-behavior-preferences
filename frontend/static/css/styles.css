@@ -1,0 +1,323 @@
+/* نظام تحليل تفضيلات السياح لآثار بابل - ملف الأنماط */
+
+/* الخطوط */
+@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap");
+
+/* متغيرات CSS */
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #e67e22;
+  --accent-color: #edd28e;
+  --success-color: #27ae60;
+  --warning-color: #f39c12;
+  --danger-color: #e74c3c;
+  --light-color: #ecf0f1;
+  --dark-color: #2c3e50;
+  --text-color: #333;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* إعدادات عامة */
+body {
+  font-family: "Tajawal", sans-serif;
+  background-color: #f5f5f5;
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* تخصيص Bootstrap */
+.navbar {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+.bg-primary {
+  background-color: var(--primary-color) !important;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #1a2530;
+  border-color: #1a2530;
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+}
+
+.card {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  border: none;
+  box-shadow: var(--box-shadow);
+}
+
+.card-header {
+  font-weight: 700;
+  padding: 1rem 1.5rem;
+}
+
+/* أنماط صفحة البداية */
+#welcome-section .card {
+  transition: transform 0.3s ease;
+}
+
+#welcome-section .card:hover {
+  transform: translateY(-5px);
+}
+
+#welcome-section .btn {
+  padding: 0.75rem 1.5rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+/* أنماط الاستبيان */
+#survey-section .option-btn {
+  text-align: right;
+  padding: 1rem;
+  border: 2px solid #ddd;
+  border-radius: var(--border-radius);
+  background-color: white;
+  transition: all 0.2s ease;
+  font-size: 1.1rem;
+}
+
+#survey-section .option-btn:hover {
+  border-color: var(--accent-color);
+  background-color: #f8f9fa;
+}
+
+#survey-section .option-btn.selected {
+  border-color: var(--accent-color);
+  background-color: #e6f7ff;
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.3);
+}
+
+#survey-section .progress {
+  height: 10px;
+  border-radius: 5px;
+  background-color: #e9ecef;
+}
+
+#survey-section .progress-bar {
+  transition: width 0.3s ease;
+}
+
+/* أنماط النتائج */
+#results-section .site-card {
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+#results-section .site-card:hover {
+  transform: translateY(-5px);
+}
+
+#results-section .site-image {
+  height: 200px;
+  object-fit: cover;
+}
+
+#results-section .match-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#results-section .coordinates-container {
+  background-color: #f8f9fa;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-family: monospace;
+  margin-top: 0.5rem;
+}
+
+/* أنماط قسم المواقع الأثرية */
+#sites-section .site-card {
+  height: 100%;
+  transition: transform 0.3s ease;
+}
+
+#sites-section .site-card:hover {
+  transform: translateY(-5px);
+}
+
+#sites-section .site-image {
+  height: 200px;
+  object-fit: cover;
+}
+
+/* أنماط المسار السياحي */
+.itinerary-day {
+  background-color: #f8f9fa;
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.itinerary-day-header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  margin: -1rem -1rem 1rem -1rem;
+}
+
+.itinerary-site {
+  background-color: white;
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+}
+
+.itinerary-site-number {
+  background-color: var(--primary-color);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1rem;
+  font-weight: bold;
+}
+
+/* أنماط النافذة المنبثقة */
+.modal-content {
+  border-radius: var(--border-radius);
+  border: none;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+/* أنماط تذييل الصفحة */
+footer {
+  margin-top: 3rem;
+}
+
+/* أنماط الاستجابة */
+@media (max-width: 768px) {
+  .card-header h1,
+  .card-header h2 {
+    font-size: 1.5rem;
+  }
+
+  #results-section .site-image {
+    height: 150px;
+  }
+
+  #sites-section .site-image {
+    height: 150px;
+  }
+
+  .itinerary-site {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .itinerary-site-number {
+    margin: 0 0 0.5rem 0;
+  }
+}
+
+/* أنماط الرسوم المتحركة */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* أنماط الأزرار */
+.btn {
+  border-radius: var(--border-radius);
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+}
+
+/* أنماط النص */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.lead {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+/* أنماط الصور */
+img {
+  max-width: 100%;
+}
+
+/* أنماط الإحداثيات */
+.coordinates-input {
+  font-family: monospace;
+  background-color: #f8f9fa;
+}
+
+/* أنماط الإشعارات */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* أنماط التحميل */
+.loading-spinner {
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
